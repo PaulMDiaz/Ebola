@@ -1,0 +1,45 @@
+\documentclass{article}
+
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage{float}
+\usepackage[export]{adjustbox}
+\usepackage[top=2cm, bottom=2cm, left=2cm, right=2cm]{geometry}
+
+
+\begin{document}
+
+Each country has their own version of this model. The coupling term which allows
+for transit of exposes individuals between countries is $\phi_{ij}$. Let's say
+that $\phi_{12}$ is from Liberia to Guinea, $\phi{21}$ is from Guinea to
+Liberia, $\phi_{13}$ is from Liberia to Sierra Leone, and etc. I assume that
+only exposed are transferred since the susceptibles moving around doesn't matter
+much, and I assume that once you're infected, you won't be going anywhere.
+Likewise, people in a hospital will be stationary. And the dead can't go
+anywhere either, unless we allow for zombies.
+
+
+
+\begin{equation} \left\lbrace
+\begin{aligned} 
+    \frac{dS_i}{dt} &= \alpha S_i - \beta_1 S_i I_i -\beta_2 S_i R_{I,i} -\beta_3S_iH_i\\
+    \frac{dE_i}{dt} &=  \beta_1 S_i I_i +\beta_2 S_i R_{I,i} +\beta_3S_iH_i-
+    \delta E_i - \phi_{ij}E_i + \phi_{ji} E_j\\
+\frac{dI_i}{dt} &=  \delta E_i - \gamma_1 I_i-\psi I_i\\
+\frac{dH_i}{dt} &= \psi I_i - \gamma_2 H_i \\ %see next two comments
+    \frac{dR_{I,i}}{dt} &= \rho_1\gamma_1 I_i - \omega R_{I,i} \\
+    \frac{dR_{B,i}}{dt} &= \omega R_{I,i}+\rho_2\gamma_2 H_i \\ %on our notes, we said this
+    \frac{dR_{R,i}}{dt} &= (1-\rho_1)\gamma_1 I_i+(1-\rho_2)\gamma_2 H_i \\%on our notes, we
+\end{aligned} \label{std_seir}
+\right.
+ \end{equation} 
+
+The above equation is valid for $i=1,2,3$ representing Liberia, Guinea, and
+Sierra Leone respectively.
+                                            
+
+
+\end{document}

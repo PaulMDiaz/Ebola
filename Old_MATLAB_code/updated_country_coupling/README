@@ -1,0 +1,37 @@
+This directory contains code which takes individual country simulations and
+couples them (via "transportation terms"). The new coupled differential equation
+is in new_equation.tex.
+
+========
+
+Instructions to run code contained in this directory:
+
+run seir_minimizer_main, which provides k_val (which are the coupling
+coefficients). This uses final_graphing which creates plots.
+
+run [psi, prop_psi] = varyPsi(k_val), which gives the effect of varying psi on the infected
+proportions
+
+run plotPsi(prop_psi), which creates the plot psi_plot.eps
+
+========
+
+seir_minimizer_main is the main function, which minimizes the error
+seir_parameter_fit returns. Running seir_minimizer_main does everything! To make
+sure seir_minimizer_main works correctly, make sure the parameter values are
+correct (according to the fits from the uncoupled simulations).
+
+seir_parameter_fit(IG) is a function which takes an initial guess of the transfer
+coefficients (the phi values), and returns the error between the model and data
+values.
+
+find_coupled_ic splices the ODEs together. Since the time spans of the data are
+different for each country, find_coupled_ic will simulate a given country (not
+coupled!) through some initial time so that the simulations can start at the same
+time.
+
+SEIHRRR( ... ) is the coupled ODE. It consists of the single SEIHRRR model three
+times, and each parameter passed to the function is a triplet (so
+alpha1=[alpha1_lib, alpha1_guin, alpha1_sl])
+
+
